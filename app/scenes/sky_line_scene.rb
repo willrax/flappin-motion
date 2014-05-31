@@ -59,6 +59,15 @@ class SkyLineScene < SKScene
     addChild PipePair.alloc.init
   end
 
+  # This action is used for both the ground and sky.
+  def scroll_action(x, duration)
+    width = (x * 2)
+    move = SKAction.moveByX(-width, y: 0, duration: duration * width)
+    reset = SKAction.moveByX(width, y: 0, duration: 0)
+
+    SKAction.repeatActionForever(SKAction.sequence([move, reset]))
+  end
+
   def update(current_time)
     @delta = @last_update_time ?  current_time - @last_update_time : 0
     @last_update_time = current_time
@@ -72,7 +81,6 @@ class SkyLineScene < SKScene
     bird.physicsBody.velocity = CGVectorMake(0, 0)
     bird.physicsBody.applyImpulse CGVectorMake(0, 12)
   end
-
 
   def rotate_bird
     node = childNodeWithName("bird")
@@ -88,14 +96,6 @@ class SkyLineScene < SKScene
     else
       value
     end
-  end
-
-  def scroll_action(x, duration)
-    width = (x * 2)
-    move = SKAction.moveByX(-width, y: 0, duration: duration * width)
-    reset = SKAction.moveByX(width, y: 0, duration: 0)
-
-    SKAction.repeatActionForever(SKAction.sequence([move, reset]))
   end
 
   # Contact delegate method
