@@ -4,7 +4,7 @@ class SkyLineScene < SKScene
   def didMoveToView(view)
     super
 
-    physicsWorld.gravity = CGVectorMake(0.0, -5.0)
+    physicsWorld.gravity = CGVectorMake(0.0, 0.0)
     physicsWorld.contactDelegate = self
 
     add_skyline
