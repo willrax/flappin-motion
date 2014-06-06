@@ -9,7 +9,7 @@ class SkyLineScene < SKScene
 
     add_skyline
     add_ground
-    # add_bird
+    add_bird
 
     add_pause_label
 
@@ -102,7 +102,7 @@ class SkyLineScene < SKScene
     check_controller
 
     move_background
-    # rotate_bird
+    rotate_bird
   end
 
 
