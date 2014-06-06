@@ -12,6 +12,7 @@ Any questions, let me know! https://twitter.com/willrax
 
 Kudos to:
 
+- https://github.com/gogogarrett/hogger/ (Built with @gogogarrett at a hack night)
 - http://www.raywenderlich.com/51108/build-spaceinvaders-in-spritekit-part-1-of-2
 - http://www.raywenderlich.com/51108/build-spaceinvaders-in-spritekit-part-2-of-2
 - http://pragprog.com/book/pssprite/build-ios-games-with-sprite-kit
