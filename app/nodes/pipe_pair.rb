@@ -12,15 +12,13 @@ class PipePair < SKNode
   end
 
   def top
-    texture = SKTexture.textureWithImageNamed("pipe_down.png")
-    pipe_up = Pipe.alloc.init(texture)
+    pipe_up = Pipe.alloc.init("pipe_down.png")
     pipe_up.position = CGPointMake(0, random_y + 450)
     pipe_up
   end
 
   def bottom
-    texture = SKTexture.textureWithImageNamed("pipe_up.png")
-    pipe_down = Pipe.alloc.init(texture)
+    pipe_down = Pipe.alloc.init("pipe_up.png")
     pipe_down.position = CGPointMake(0, random_y)
     pipe_down
   end
