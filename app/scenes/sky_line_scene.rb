@@ -20,12 +20,27 @@ class SkyLineScene < SKScene
       x_position = mid_x + (i * mid_x * 2)
       skyline = SKSpriteNode.spriteNodeWithTexture(texture)
       skyline.position = CGPointMake(x_position, mid_y)
+      skyline.name = "skyline"
       skyline.zPosition = -20
       skyline.scale = 1.12
-      skyline.runAction scroll_action(mid_x, 0.1)
+      # skyline.runAction scroll_action(mid_x, 0.1)
 
       addChild skyline
     end
+  end
+
+  # Alternative method to using actions.
+  #
+  def move_background
+    self.enumerateChildNodesWithName "skyline", usingBlock: -> (node, stop) {
+      velocity = CGPointMake(-20, 0)
+      movement_amount = CGPointMake(velocity.x * @delta, velocity.y * @delta)
+      node.position = CGPointMake(node.position.x + movement_amount.x, node.position.y + movement_amount.y)
+
+      if node.position.x <= -node.size.width / 2
+        node.position = CGPointMake((node.position.x + node.size.width) * 2, node.position.y)
+      end
+    }
   end
 
   def add_ground
@@ -72,8 +87,10 @@ class SkyLineScene < SKScene
     @delta = @last_update_time ?  current_time - @last_update_time : 0
     @last_update_time = current_time
 
+    move_background
     rotate_bird
   end
+
 
   def touchesBegan(touches, withEvent: event)
     bird = childNodeWithName("bird")
