@@ -114,7 +114,7 @@ class SkyLineScene < SKScene
   end
 
   def check_controller
-    controllers = CGController.controllers
+    controllers = GCController.controllers
 
     if controllers.count > 1
       controller = controller.first.extendedGamepad

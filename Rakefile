@@ -10,6 +10,6 @@ end
 
 Motion::Project::App.setup do |app|
   app.name = "flappy"
-  app.frameworks += ["SpriteKit"]
+  app.frameworks += ["SpriteKit", "GameController"]
   app.interface_orientations = [:portrait]
 end
