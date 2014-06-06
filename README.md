@@ -6,6 +6,8 @@ https://speakerdeck.com/willrax/skfun
 
 I've tried to provide examples of how you can do contact and scrolling using two different methods. In both cases these are commented out. You can uncomment to see the difference between the two.
 
+One great example of why actions are so good is the background scrolling. At the moment the background doesn't use any actions so when you pause the game it continues to scroll. If we wanted to pause these nodes as well we would have to manually stop that movement. All the other nodes that are moved by actions are paused. ACTIONS!
+
 Any questions, let me know! https://twitter.com/willrax
 
 ![flappin-screenshot](http://cl.ly/Vq0E/Screen%20Shot%202014-05-30%20at%209.20.22%20pm.png)
