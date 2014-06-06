@@ -4,6 +4,8 @@ This is the demo game built for my Sprite Kit talk at #inspect 2014 in San Franc
 
 https://speakerdeck.com/willrax/skfun
 
+I've tried to provide examples of how you can do contact and scrolling using two different methods. In both cases these are commented out. You can uncomment to see the difference between the two.
+
 Any questions, let me know! https://twitter.com/willrax
 
 ![flappin-screenshot](http://cl.ly/Vq0E/Screen%20Shot%202014-05-30%20at%209.20.22%20pm.png)
