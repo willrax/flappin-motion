@@ -15,8 +15,9 @@ class Bird < SKSpriteNode
     bird_one = SKTexture.textureWithImageNamed("bird_one.png")
     bird_two = SKTexture.textureWithImageNamed("bird_two.png")
     bird_three = SKTexture.textureWithImageNamed("bird_three.png")
+    animation = SKAction.animateWithTextures([bird_one, bird_two, bird_three], timePerFrame: 0.15)
 
-    SKAction.repeatActionForever(SKAction.animateWithTextures([bird_one, bird_two, bird_three], timePerFrame: 0.15))
+    SKAction.repeatActionForever animation
   end
 
   def physics_body

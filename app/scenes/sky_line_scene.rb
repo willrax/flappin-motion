@@ -10,6 +10,7 @@ class SkyLineScene < SKScene
     add_skyline
     add_ground
     add_bird
+
     begin_spawning_pipes
   end
 
@@ -75,6 +76,7 @@ class SkyLineScene < SKScene
   end
 
   # This action is used for both the ground and sky.
+  #
   def scroll_action(x, duration)
     width = (x * 2)
     move = SKAction.moveByX(-width, y: 0, duration: duration * width)
@@ -87,12 +89,18 @@ class SkyLineScene < SKScene
     @delta = @last_update_time ?  current_time - @last_update_time : 0
     @last_update_time = current_time
 
+    check_controller
+
     move_background
     rotate_bird
   end
 
 
   def touchesBegan(touches, withEvent: event)
+    bird_jump
+  end
+
+  def bird_jump
     bird = childNodeWithName("bird")
 
     bird.physicsBody.velocity = CGVectorMake(0, 0)
@@ -103,6 +111,18 @@ class SkyLineScene < SKScene
     node = childNodeWithName("bird")
     dy = node.physicsBody.velocity.dy
     node.zRotation = max_rotate(dy * (dy < 0 ? 0.003 : 0.001))
+  end
+
+  def check_controller
+    controllers = CGController.controllers
+
+    if controllers.count > 1
+      controller = controller.first.extendedGamepad
+
+      if controller.buttonA.isPressed?
+        bird_jump
+      end
+    end
   end
 
   def max_rotate(value)
@@ -116,6 +136,7 @@ class SkyLineScene < SKScene
   end
 
   # Contact delegate method
+  #
   def didBeginContact(contact)
     bird = childNodeWithName("bird")
     bird.position = CGPointMake(80, CGRectGetMidY(self.frame))
@@ -124,6 +145,8 @@ class SkyLineScene < SKScene
     enumerateChildNodesWithName "pipes", usingBlock:-> (node, stop) { node.removeFromParent }
   end
 
+  # Helper methods.
+  #
   def mid_x
     CGRectGetMidX(self.frame)
   end
