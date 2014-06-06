@@ -9,9 +9,19 @@ class SkyLineScene < SKScene
 
     add_skyline
     add_ground
-    add_bird
+    # add_bird
+
+    add_pause_label
 
     begin_spawning_pipes
+  end
+
+  def add_pause_label
+    label = SKLabelNode.labelNodeWithFontNamed("Chalkduster")
+    label.text = "Pause"
+    label.position = CGPointMake(80, 500)
+    label.name = "pause"
+    addChild label
   end
 
   def add_skyline
@@ -92,12 +102,28 @@ class SkyLineScene < SKScene
     check_controller
 
     move_background
-    rotate_bird
+    # rotate_bird
   end
 
 
   def touchesBegan(touches, withEvent: event)
-    bird_jump
+    puts "here"
+
+    touch = touches.anyObject
+    location = touch.locationInNode(self)
+    node = nodeAtPoint(location)
+    puts node.name
+
+    if node.name == "pause"
+      if self.isPaused
+        self.paused = false
+      else
+        self.paused = true
+      end
+    else
+      bird_jump
+    end
+
   end
 
   def bird_jump
